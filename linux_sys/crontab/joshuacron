@@ -1,0 +1,2 @@
+# For news spider
+10 15 * * * sh /media/joshua/My_Resource/WorkingSpace/R\&D/repo/02.SourceCodeLibrary/1.DevelopLibrary/Demo/NewsSpider/Source/run.sh

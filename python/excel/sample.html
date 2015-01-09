@@ -1,0 +1,148 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>购物单 - 管理中心</title>
+</head>
+<body>
+<table width="100%" height="10" border="0" cellpadding="0" cellspacing="0">
+  <tbody><tr>
+    <td><spacer type="block"></spacer></td>
+  </tr>
+</tbody></table>
+<style type="text/css" media="print">
+.noprint {DISPLAY: none}
+</style>
+
+<style type="text/css" media="screen,print">
+BODY {FONT-SIZE: 12px; MARGIN: 0px; FONT-FAMILY: Arial, Helvetica, sans-serif; background-color:#FFFFFF;}
+IMG {BORDER-TOP-WIDTH: 0px; PADDING-RIGHT: 2px; PADDING-LEFT: 2px; BORDER-LEFT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; PADDING-BOTTOM: 2px; PADDING-TOP: 2px; BORDER-RIGHT-WIDTH: 0px}
+P {MARGIN: 8px 0px}
+h1 {FONT-WEIGHT: bold; MARGIN: 0px;background: none repeat scroll 0 0 #fff; color:#000000; border: 0px solid #CFE7ED; font-family:"微软雅黑","新宋体"; font-size:24px;}
+h2 {FONT-WEIGHT: bold; FONT-SIZE: 14px; MARGIN: 0px; background: none repeat scroll 0 0 #fff; color:#000000;}
+.td_frame {	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 5px; PADDING-TOP: 5px; BORDER-BOTTOM: #000000 2px solid}
+.x-barcode {PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px}
+.table_data_title {	FONT-WEIGHT: bold; FONT-SIZE: 14px; HEIGHT: 25px}
+.table_data_content {LINE-HEIGHT: 20px; HEIGHT: 20px}
+#print_confirm {BORDER-TOP: #999999 1px solid; WIDTH: 100%; PADDING-TOP: 4px; POSITION: absolute; HEIGHT: 60px; BACKGROUND-COLOR: #eee; padding-top:20px}
+#btn_print { MARGIN-LEFT: auto; WIDTH: 71px; CURSOR: pointer; MARGIN: auto; HEIGHT: 24px ; text-align:center;}
+</style>
+
+<div id="print1">
+<table class="table_frame" cellspacing="0" cellpadding="0" width="90%" align="center" border="0">
+  
+  <tbody><tr>
+    <td>
+      <table cellspacing="0" cellpadding="0" width="100%" border="0">
+        
+        <tbody><tr>
+          <td class="td_frame">
+		  	<table cellspacing="0" cellpadding="0" width="100%" border="0" style="margin-top:20px;">
+              <tbody><tr>
+                <td align="center">
+                  <h1>商品购物单</h1>
+				  </td>
+                </tr>
+			</tbody></table>
+      <img id="img_barcode" src="ean13.svg"></img>
+            <table cellspacing="0" cellpadding="0" width="100%" border="0">
+              <tbody>
+                <tr>
+                  <td></td>
+                  <td width="80%"></td>
+                  <td width="20%">
+                    <p id="receiver_name">收货人：杨洪宇</p>
+                    <p id="receiver_tel">电话：13842006527</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+			</td>
+			</tr>
+		</tbody></table>
+		</td></tr>
+  <tr>
+    <td class="td_frame">
+      <table cellspacing="0" cellpadding="0" width="98%" align="center" border="0">
+        
+        <tbody><tr>
+          <td>
+            <h2 id="order_no">订单号：20141122230</h2></td>
+          <td align="right">
+            <h2 id="order_date">订购日期：2014-11-22  09:47</h2></td></tr></tbody></table></td></tr>
+  <tr>
+    <td class="td_frame">
+      <table cellspacing="0" cellpadding="0" width="98%" align="center" border="0">
+        
+        <tbody id="product_list">
+          <tr class="table_data_title">
+            <td>No</td>
+            <td>货号</td>
+            <td>商品名称</td>
+            <td>规格</td>
+            <td>单价</td>
+            <td>数量</td>
+            <td>金额</td>
+          </tr>
+<!--           <tr>
+            <td height="25">1</td>
+            <td>WSL004956-4</td>
+            <td>test【测试】梅兰竹菊 茶杯 青白瓷浅浮雕 纯手工雕刻单杯装 </td>
+            <td>菊 / -</td>
+            <td>￥58.00元</td>
+            <td>1</td>
+            <td>￥58元</td>
+          </tr>
+
+          <tr>
+            <td height="25">2</td>
+            <td>WSL004956-1</td>
+            <td>test【测试】梅兰竹菊 茶杯 青白瓷浅浮雕 纯手工雕刻单杯装 </td>
+            <td>梅 / -</td>
+            <td>￥58.00元</td>
+            <td>1</td>
+            <td>￥58元</td>
+          </tr> -->
+		  		</tbody></table></td></tr>
+  <tr>
+    <td class="td_frame">
+      <table cellspacing="0" cellpadding="0" width="100%" align="center" border="0">
+        
+        <tbody><tr>
+          <td style="HEIGHT: 150px" valign="top" width="80%">
+            <p id="beizhu">备注</p>
+            <p id="vip_reply">会员留言：</p><br>
+            <p id="operator_reply">操作员回复：</p><br>
+            <p id="receiver_address">收货人地址：辽宁沈阳，苏家屯区桂花街198-2号</p>
+          </td>
+          <td valign="top" width="20%">
+            <p id="total_cost">商品总价：￥116</p>
+            <p id="total_num">商品总数：2&nbsp;&nbsp;件</p>
+            <p id="kuaidi_cost">配送费用：￥0.00</p>
+            <p id="manu_cost">支付手续费：￥0.00</p>
+            <p id="saved_money">订单优惠：￥0.00</p></td></tr></tbody></table></td></tr>
+  <tr>
+    <td class="td_frame">
+      <table cellspacing="0" cellpadding="0" width="100%" align="center" border="0">
+        
+        <tbody><tr>
+          <td width="80%" height="70" valign="top">            
+            <p>服务电话：400-007-9752（尽心为爱）</p>
+			<p>祝您购物愉快</p>
+            </td>
+          <td valign="top" width="20%">
+            <h2 id="s_total_cost">应付总金额：<span class="f12">￥</span>116.00元</h2></td></tr></tbody></table></td></tr>
+ 
+  <tr>
+    <td style="PADDING-BOTTOM: 50px; HEIGHT: 30px" align="right"><strong>为思礼创艺生活馆</strong> </td>
+  </tr></tbody></table>
+</div>
+<div id="print2"></div>
+<div class="noprint" id="print_confirm">
+<div id="btn_print">
+  <a id="next_page" href="javascript:window.print();">下一页</a>
+  <a href="javascript:window.print();">  打印</a>
+</div>
+</div>
+
+</body>
+</html>
