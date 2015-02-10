@@ -67,6 +67,6 @@ fixme2 = ['Levnhtein', 'Leveshein', 'Leenshten', 'Leveshtei', 'Lenshtein', 'Lven
 print(median(fixme2))
 
 # median_improve(string, string_sequence[, weight_sequence])
-#   median的改进版，根据给定的第1个参数，计算median string
+#   median的改进版，根据给定的第1个参数string，计算median string
 print(median_improve(median(fixme1), fixme2))
 print(ratio('Brian', 'Jesus'))
