@@ -5,6 +5,7 @@
 # @Date:   2015-02-09 14:29:36
 # @About demo.py
 #   Levenshtein是用于文本或字符串距离以及相似度计算的工具，本脚本用户其接口的测试和学习。
+#   参见：https://pypi.python.org/pypi/python-Levenshtein/0.12.0
 
 from Levenshtein import *
 
@@ -52,7 +53,7 @@ a, b = 'Jeshua', 'Joshua'
 print(matching_blocks(editops(a, b), a, b))
 mb = matching_blocks(editops(a, b), len(a), len(b))
 print(mb)
-# 打印出相同的字符
+# 打印出相同的字符块
 print(''.join([a[x[0]:x[0] + x[2]] + ' ' for x in mb]))
 print(''.join([b[x[0]:x[0] + x[2]] + ' ' for x in mb]))
 
@@ -67,6 +68,43 @@ fixme2 = ['Levnhtein', 'Leveshein', 'Leenshten', 'Leveshtei', 'Lenshtein', 'Lven
 print(median(fixme2))
 
 # median_improve(string, string_sequence[, weight_sequence])
-#   median的改进版，根据给定的第1个参数string，计算median string
-print(median_improve(median(fixme1), fixme2))
+#   median的改进版，根据给定的第1个参数string，计算评估median string
+estimate_ms = median_improve('Spam', fixme2)
+print(estimate_ms)
+# 根据评估的median string，再来计算median string
+print(median_improve(estimate_ms, fixme2))
+
+# opcodes(source_string, destination_string)
+# opcodes(edit_operations, source_length, destination_length)
+#   找出从一个string转变成另一个string的步骤.
+#   结果和SequenceMatcher的get_opcodes()一样，但因算法不同，结果可能不同
+for x in opcodes('Jeshua', 'Joseph'):
+    print(x)
+
+
+# quickmedian(string[, weight_sequence])
+#   median()的快速实现，介于setmedian()和随机选取一个字符串之间的快速算法
+print(quickmedian(fixme2))
+
+# ratio(string1, string2)
+#   计算两string的相似度，0：完全不同，1：完全相同
 print(ratio('Brian', 'Jesus'))
+print(ratio('Jeshua', 'Jesus'))
+
+
+# seqratio(string_sequence1, string_sequence2)
+# 计算两字符串数组的相似度
+print(seqratio(['newspaper', 'litter bin', 'tinny', 'antelope'], ['caribou', 'sausage', 'gorn', 'woody']))
+
+# setmedian(string[, weight_sequence])
+#   找出字符串序列中median字符串，结果是字符串序列中的一个，而不像median。median计算出的字符串是字符串序列中最接近中性的字符串，可能不是其中的任何一个而是合成的新的字符串
+print(setmedian(fixme2))
+
+# setratio(string_sequence1, string_sequence2)
+#   The best match between any string in the first set and the second set is attempted.
+#   两个数组序列的字符串顺序是无关的
+print(setratio(['newspaper', 'litter bin', 'tinny', 'antelope'], ['caribou', 'sausage', 'gorn', 'woody']))
+
+
+# subtract_edit(edit_operations, subsequence)
+#   
