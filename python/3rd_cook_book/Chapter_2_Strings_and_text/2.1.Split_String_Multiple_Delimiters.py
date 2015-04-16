@@ -3,7 +3,7 @@
 # @Author: Joshua
 # @E-Mail: liuchaozhen@neusoft.com
 # @Date:   2015-03-18 16:55:34
-# @About 2.1.py
+# @About 2.1.Split_String_Multiple_Delimiters.py
 
 line = 'asdf fjdk; afed, fjek,asdf,foo'
 import re
