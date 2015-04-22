@@ -1,11 +1,12 @@
 digraph complex {
     bgcolor="transparent";
-    node [color="gray" fontcolor="gray"];
+    # bgcolor="#282828";
+    node [color="#dddddd" fontcolor="#dddddd"];
     
-    root -> a [color="gray"];
-    root -> b [color="gray"];
-    a -> b [color="gray"];
-    a -> a [color="gray"];
-    b -> c [color="gray"];
-    b -> a [color="gray"];
+    root -> a [color="#dddddd"];
+    root -> b [color="#dddddd"];
+    a -> b [color="#dddddd"];
+    a -> a [color="#dddddd"];
+    b -> c [color="#dddddd"];
+    b -> a [color="#dddddd"];
 }
