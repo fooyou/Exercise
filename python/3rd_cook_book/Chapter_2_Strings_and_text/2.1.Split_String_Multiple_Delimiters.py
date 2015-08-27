@@ -13,9 +13,10 @@ print(fileds)
 
 fileds = re.split(r'(;|,|\s)\s*', line)
 print(fileds)
+# ['asdf', ' ', 'fjdk', ';', 'afed', ',', 'fjek', ',', 'asdf', ',', 'foo']
 
 # Getting the split characters might be useful in certain contexts. For example, maybe you
-#need the split characters later on to reform an output string:
+# need the split characters later on to reform an output string:
 values = fileds[::2]
 print(values)
 
