@@ -3,7 +3,7 @@
 # @Author: Joshua
 # @E-Mail: liuchaozhen@neusoft.com
 # @Date:   2015-08-27 16:58:48
-# @About 2.4.Matching_and_Searching_for_Text_Patterns.py: 
+# @About 2.4.Matching_and_Searching_for_Text_Patterns.py
 #   对指定的式样进行匹配和搜索
 
 text = 'yeah, but no, but yeah, but no, but yeah'

@@ -3,7 +3,7 @@
 # @Author: Joshua
 # @E-Mail: liuchaozhen@neusoft.com
 # @Date:   2015-08-27 15:54:08
-# @About 2.3.Matching_Strings_Using_Shell_Wildcard_Patterns.py: 
+# @About 2.3.Matching_Strings_Using_Shell_Wildcard_Patterns.py
 #   怎么匹配Shell类似的“*.py”，“Dat[0-9]*.csv”等？
 
 '''
