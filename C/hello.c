@@ -1,9 +1,10 @@
-/* 
-* @Author: joshua
-* @Date:   2014-11-25 17:15:15
-* @Last Modified by:   joshua
-* @Last Modified time: 2014-11-25 17:15:22
-*/
+/**
+ * @Author: Joshua
+ * @E-Mail: liuchaozhen@neusoft.com
+ * @Date:   2014-11-25 17:15:22
+ * @About hello.c: 
+ */
+
 
 #include <stdio.h>
 

@@ -1,0 +1,11 @@
+#!/bin/bash
+# coding: utf-8
+# bash执行某脚本时，$0：设置为脚本的名字，$1：接下来的参数，$n：xx
+# 举例：
+#   ./arguments inputfile outputfile
+# 则：$0: ./arguments
+#     $1: inputfile
+#     $2: outputfile
+
+echo $0 $1 $2
+

@@ -7,6 +7,8 @@
 
 from flask import Flask
 from flask import render_template
+from flask import make_response
+
 app = Flask(__name__)
 
 @app.route('/')
@@ -26,6 +28,12 @@ def show_user_profile(username):
 @app.route('/post/<int:post_id>')
 def show_post(post_id):
     return 'Post %d' % post_id
+
+@app.route('/response')
+def response():
+    response = make_response('<h1>This document carries a cookie!</h>')
+    response.set_cookie('answer', '42')
+    return response
 
 if __name__ == '__main__':
     app.run(debug=True)
