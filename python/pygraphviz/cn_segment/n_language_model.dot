@@ -1,0 +1,48 @@
+# date: 2016-02-25 14:02:20
+digraph name {
+    bgcolor="transparent";
+    ranksep=0.2;
+    node [fixedsize=true;]
+
+    {
+        rankdir=LR;
+        rank=same;
+        F [label="研究"];
+        I [label="生物学"];
+    }
+
+    {
+        rankdir=LR;
+        rank=same;
+        START [label="<s>"]
+        A [label="研"];
+        B [label="究"];
+        C [label="生"];
+        D [label="物"];
+        E [label="学"];
+        END [label="</s>"];
+    }
+
+    {
+        rankdir=LR;
+        rank=source;
+        G [label="研究生"];
+        H [label="生物"];
+    }
+
+    F -> H [label="P(生物|研究)"];
+
+    START -> A [label="P(研|<s>)"];
+    A -> B [label="P(究|研)"];
+    B -> C [label="P(生|究)"];
+    C -> D [label="P(物|生)"];
+    D -> E [label="P(学|物)"];
+    E -> END [label="P(</s>|学)"];
+    START -> F [label="P(研究|<s>)"];
+    START -> G [label="P(研究生|<s>)"];
+    F -> C [label="P(生|研究)"];
+    F -> I [label="P(生物学|研究)"];
+    G -> D [label="P(物|研究生)"];
+    I -> END [label="P(</s>|生物学)"];
+    H -> E [label="P(学|生物)"];
+}

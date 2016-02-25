@@ -1,0 +1,14 @@
+# date: 2016-02-23 16:02:49
+# graphviz version >= 2.29
+# 展示箭头的使用
+digraph name {
+    bgcolor="transparent";
+    # forcelabels=true;
+    fat [label="胖子"]
+    arrow [label="弓箭"]
+    fat:sw -> arrow:nw [dir=forward, xlabel="  (1, 5)  "]
+    fat -> arrow [dir=none]
+    arrow:ne -> fat:se [dir=backward, xlabel="  (1, 1)  "]
+
+    king -> quene [label="国王\n女王"];
+}

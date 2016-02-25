@@ -1,0 +1,31 @@
+# date: 2016-02-23 16:02:40
+digraph name {
+    bgcolor="transparent";
+    rankdir=TD; # or LR
+    node [style=filled,color="#5D8AA8", fillcolor="#5D8AA8"];
+
+    subgraph c1 {
+        edge [color="#004225", arrowsize="0.6", penwidth="1"];
+        "node 1" -> "node 3";
+        "node 5" -> "node 7";
+        "node 1" -> "node 2"; 
+        label = "";
+    }
+
+    subgraph c2 {
+        edge [color="#FBEC5D", arrowsize="1.2", penwidth="3"];
+        "node 2" -> "node 4";
+        "node 4" -> "node 6";
+        "node 3" -> "node 5";
+        "node 6" -> "node 8"; 
+        label = "";
+
+    }
+
+    begin -> "node 1";
+    start -> "node 2";
+    "node 1" -> "node 4"
+    "node 2" -> "node 6";
+
+    start [shape=diamond];
+}

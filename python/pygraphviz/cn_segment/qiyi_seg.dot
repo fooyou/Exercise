@@ -1,0 +1,38 @@
+# date: 2016-02-23 15:02:50
+digraph multi_seg {
+    bgcolor="transparent";
+    rankdir=LR;
+    node [
+        fontcolor="#666666",
+        style=filled
+    ];
+    subgraph cluster_main {
+        node [
+            # fixedsize=true,
+            color="#bbbbbb",
+            shape=circle,
+        ];
+        edge [arrowhead=normal,arrowtail=dot];
+        START [shape=rectangle, fillcolor="#EE0000"];
+        A [label="习", fillcolor="#98FB98"];
+        B [label="主", fillcolor="#98FB98"];
+        C [label="席", fillcolor="#98FB98"];
+        D [label="说", fillcolor="#87CEEB"];
+        E [label="的", fillcolor="#87CEEB"];
+        F [label="确", fillcolor="#32CD32"];
+        G [label="实", fillcolor="#32CD32"];
+        H [label="在", fillcolor="#87CEEB"];
+        I [label="理", fillcolor="#87CEEB"];
+        END [shape=rectangle, fillcolor="#EE0000"];
+        START -> A -> B -> C -> D -> E -> F -> G -> H -> I -> END;
+    }
+
+    BC [label="主席", fillcolor="#98FB98"];
+    HI [label="在理", fillcolor="#87CEEB"];
+    EF [label="的确"];
+    FG [label="确实", fillcolor="#32CD32"];
+    GH [label="实在"];
+    A -> BC -> D -> EF -> GH -> I;
+    E -> FG -> HI -> END;
+    F -> GH;
+}

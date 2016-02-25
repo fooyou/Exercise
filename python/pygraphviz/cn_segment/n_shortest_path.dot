@@ -1,0 +1,36 @@
+# date: 2016-02-24 12:02:50
+digraph Dijkstra {
+    bgcolor="transparent";
+    splines=ortho; # polyline, curved, false, etc.
+    node [
+        fontcolor="#333333",
+        shape=circle,
+    ];
+    # edge [arrowhead=normal,arrowtail=dot];
+    
+    {
+        rank=same;
+        rankdir=LR;
+        A [label="0"];
+        B [label="1"];
+        C [label="2"];
+        D [label="3"];
+        E [label="4"];
+        F [label="5"];
+        G [label="6"];
+        H [label="7"];
+    }
+
+    A -> B [xlabel="他\n1"];
+    B -> C [xlabel="说\n1"];
+    C -> D [xlabel="的\n1"];
+    D -> E [xlabel="确\n1"];
+    E -> F [xlabel="实\n1"];
+    F -> G [xlabel="在\n1"];
+    G -> H [xlabel="理\n1"];
+
+    D -> F [xlabel="确实\n1"];
+    F -> H [xlabel="在理\n1"];
+    C -> E [xlabel="的确\n1"];
+    E -> G [xlabel="实在\n1"];
+}

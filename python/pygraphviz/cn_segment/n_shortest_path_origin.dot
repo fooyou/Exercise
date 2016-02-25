@@ -1,0 +1,33 @@
+# date: 2016-02-24 12:02:50
+digraph Dijkstra {
+    bgcolor="transparent";
+    rankdir=LR;
+    node [
+        fontcolor="#333333",
+        shape=circle,
+    ];
+    
+    {
+        A [label="0"];
+        B [label="1"];
+        C [label="2"];
+        D [label="3"];
+        E [label="4"];
+        F [label="5"];
+        G [label="6"];
+        H [label="7"];
+    }
+
+    A -> B [taillabel="他", headlabel="1"];
+    B -> C [taillabel="说", headlabel="1"];
+    C -> D [taillabel="的", headlabel="1"];
+    D -> E [taillabel="确", headlabel="1"];
+    E -> F [taillabel="实", headlabel="1"];
+    F -> G [taillabel="在", headlabel="1"];
+    G -> H [taillabel="理", headlabel="1"];
+
+    D -> F [taillabel="确实", headlabel="1"];
+    F -> H [taillabel="在理", headlabel="1"];
+    C -> E [taillabel="的确", headlabel="1"];
+    E -> G [taillabel="实在", headlabel="1"];
+}
