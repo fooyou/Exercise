@@ -1,0 +1,28 @@
+# date: 2016-02-26 11:02:56
+digraph name {
+    bgcolor="transparent";
+    node [
+        shape=circle,
+    ];
+
+    {
+        rank=same;
+        rankdir=LR;
+        y1 [label=<y<SUB>1</SUB>>, fillcolor="#FFA500"];
+        y2 [label=<y<SUB>2</SUB>>, fillcolor="#FFA500"];
+        y3 [label=<y<SUB>3</SUB>>, fillcolor="#FFA500"];
+        y1 -> y2 -> y3;
+    }
+
+    {
+        rank=same;
+        rankdir=LR;
+        x1 [label=<x<SUB>1</SUB>>, fillcolor="#98FB98"];
+        x2 [label=<x<SUB>2</SUB>>, fillcolor="#98FB98"];
+        x3 [label=<x<SUB>3</SUB>>, fillcolor="#98FB98"];
+    }
+
+    y1 -> x1;
+    y2 -> x2;
+    y3 -> x3;
+}

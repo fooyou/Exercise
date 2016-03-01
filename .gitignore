@@ -6,3 +6,10 @@ bin/
 *.sublime-workspace
 *.class
 venv/
+tags/
+tags
+*.gz
+*.bz
+*.svg
+*.bin
+
