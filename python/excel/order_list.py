@@ -3,7 +3,7 @@
 # @Author: joshua
 # @Date:   2014-11-26 15:13:49
 # @Last Modified by:   joshua
-# @Last Modified time: 2014-11-27 16:02:38
+# @Last Modified time: 2015-02-07 12:56:56
 
 import os, sys
 import xlrd
@@ -158,7 +158,7 @@ def main(xlspath, samplehtml, outdir):
             for i in range(1, sheet.nrows):        # 行数
                 row = sheet.row_values(i)   # 获取一行信息
                 # print(row)
-                if i < sheet.nrows - 1:
+                if i < sheet.nrows - 1:write
                     next_row = sheet.row_values(i + 1)
                 else:
                     next_row = ['none']
