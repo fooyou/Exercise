@@ -1,0 +1,53 @@
+# !/bin/bash
+# Author: Joshua Liu
+# Purpose: Swtich ip system-connections meanwhile set proxies.
+# Usage:
+#       1. nmcli con list       # Select connection id
+#       2. source ipswitch <id>
+
+ip1_addr="172.30.50.10"
+ip1_port="8080"
+ip2_addr="proxy.neusoft.com"
+ip2_port="8080"
+ip2_user="liuchaozhen"
+ip2_pass="liuSY*&201601"
+
+# Check input ID
+function IsIdValid
+{
+    for itm in $(ls /etc/NetworkManager/system-connections)
+    do
+        if [ $itm = $1 ]
+        then
+            return 1
+        fi
+    done
+    return 0
+}
+
+# Call function
+IsIdValid $1
+if [ 1 = $? ]
+# Valid
+then
+    nmcli con up id $1
+    url=""
+    if [ $1 = "VPN" ]
+    then
+        echo "Switch to $1"
+        url="http://$ip1_addr:$ip1_port/"
+    elif [ $1 = "Neusoft" ]
+    then
+        echo "Switch to $1"
+        url="http://$ip2_user:$ip2_pass@$ip2_addr:$ip2_port/"
+    fi
+
+    http_proxy=$url
+    export http_proxy
+    https_proxy=$url
+    export https_proxy
+else
+# Invalid
+    echo "Error: Invalid connection id $1"
+fi
+

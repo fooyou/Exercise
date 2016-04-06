@@ -20,8 +20,10 @@ print(date_cmp1 < date_cmp2)
 
 
 def gen_date(start=datetime.strptime('2009-01-01', '%Y-%m-%d'), end=datetime.now()):
-    while start + timedelta(days=1) <= end:
-        print(start.strftime('%Y-%m-%d'))
+    while start < end:
+        if start.strftime('%w') != '5' and start.strftime('%w') != '6':
+            yield start.strftime('%Y-%m-%d')
         start = start + timedelta(days=1)
 
-gen_date()
+for day in gen_date():
+    print(day)
