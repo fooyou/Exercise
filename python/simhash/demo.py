@@ -8,26 +8,20 @@
 # import re
 from simhash import Simhash
 from simhash import SimhashIndex
+from data import news_lists_1, news_lists_2
 
-data = {
-    1: u'我 说 人 在 北京 还是 在 上海？',
-    2: u'我 说 人 在 北京 还是 在 上海 呢？',
-    3: u'This is simhash test.',
-}
-objs = [(str(k), Simhash(v)) for k, v in data.items()]
-index = SimhashIndex(objs, k=4)
-z = index.get_near_dups(Simhash(u'我 说 人 在 北京 还是 在'))
-print(z)
+
 
 # 对于汉语无论分词于不分词，simhash的结果是相同的。
 # 
-# x = Simhash('我说人在北京还是在上海？')
-y = Simhash('hello')
-x = Simhash('Hi')
-# y = Simhash('我 说 人 在 北京 还是 在 上海 呢？')
-print(x._features, x.value)
-print(y._features, y.value)
-print(x.distance(y))
+for i, news in enumerate(news_lists_1):
+    x = Simhash(news_lists_1[i]['content'], f=64)
+    #y = Simhash('hello')
+    #x = Simhash('Hi')
+    y = Simhash(news_lists_2[i]['content'], f=64)
+    print('1.simhash:', x.value)
+    print('2.simhash:', y.value)
+    print('distance:', x.distance(y))
+    print('similarity:', (64 - x.distance(y)) / 64)
+    print(news_lists_1[i]['title'])
 
-xv = float(x.value) / float(y.value)
-print(xv)
