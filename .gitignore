@@ -12,4 +12,5 @@ tags
 *.bz
 *.svg
 *.bin
+.idea
 
