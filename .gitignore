@@ -13,4 +13,7 @@ tags
 *.svg
 *.bin
 .idea
+.DS_Store
+*.png
+*.jpg
 

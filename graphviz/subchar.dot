@@ -1,0 +1,4 @@
+digraph G {
+  c -> b [label=<&#x392;<sub>21</sub>>]
+  a -> b [label=<&#x392;<sub><font point-size="8">21</font></sub>>]
+}
