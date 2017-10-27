@@ -4,7 +4,7 @@
 # @Author: Joshua Liu
 # @Email: liuchaozhenyu@gmail.com
 # @Create Date: 2017-08-18 21:08:50
-# @Last Modified: 2017-08-20 22:08:02
+# @Last Modified: 2017-08-21 10:08:15
 # @Description:
 
 from abc import ABCMeta, abstractmethod
@@ -13,7 +13,7 @@ class Animal(object):
     __metaclass__ = ABCMeta
 
     def __init__(self, name):
-        self.name = name
+        self.name = 'Animal'
 
     @abstractmethod
     def say(self):
@@ -25,6 +25,8 @@ class Animal(object):
 
 
 class Dog(Animal):
+    # def __init__(self, name):
+    #     self.name = 'Dog'
 
     def say(self):
         print('汪汪')
@@ -33,3 +35,4 @@ class Dog(Animal):
 dog = Dog('dog')
 dog.say()
 dog.smile()
+print(dog.name)

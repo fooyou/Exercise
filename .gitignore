@@ -16,4 +16,10 @@ tags
 .DS_Store
 *.png
 *.jpg
-
+CMakeFiles/
+build/
+CMakeCache.txt
+compile/
+MakeFile
+.ipynb_checkpoints/
+Untitled.ipynb

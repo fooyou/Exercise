@@ -7,8 +7,15 @@
 
 
 #include <stdio.h>
+#include <stdlib.h>
 
+/**
+ * @Synopsis main 
+ *
+ * @Returns 
+ */
 int main() {
+    const char* CST_STR = "Hello World!";_
     printf("Hello World\n");
     return 0;
 }

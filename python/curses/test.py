@@ -4,7 +4,7 @@
 # @Author: Joshua Liu
 # @Email: liuchaozhenyu@gmail.com
 # @Create Date: 2017-08-02 10:08:56
-# @Last Modified: 2017-08-04 17:08:37
+# @Last Modified: 2017-08-21 14:08:19
 # @Description:
 import sys
 import curses
@@ -58,5 +58,5 @@ def textbox(screen):
 
 if __name__ == '__main__':
     # hello()
-    curses.wrapper(maxyx)
-    # curses.wrapper(textbox)
+    # curses.wrapper(maxyx)
+    curses.wrapper(textbox)
