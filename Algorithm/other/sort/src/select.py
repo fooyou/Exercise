@@ -4,12 +4,13 @@
 # @Author: Joshua Liu
 # @Email: liuchaozhenyu@gmail.com
 # @Create Date: 2017-10-27 15:10:16
-# @Last Modified: 2017-10-27 18:10:08
+# @Last Modified: 2017-10-28 10:10:15
 # @Description:
 #   用了下 C 写代码太费劲了，虽然性能好，还是换 Python 吧
 
 import time
 import random
+import math
 from copy import deepcopy as dc
 
 def select_sort(sequence):
@@ -97,6 +98,28 @@ def insertion_dichotomy_sort(sequence):
     return seq
 
 
+def shell_sort(sequence):
+    ''' 
+    希尔排序的实质就是分组插入排序，本函数是其严格实现
+    http://blog.csdn.net/morewindows/article/details/6668714
+    '''
+    seq = dc(sequence)
+
+    gap = int(len(seq) / 2)
+    while gap > 0:
+        for i in range(gap):
+            for j in range(i + gap, len(seq), gap):
+                if seq[j] < seq[j - gap]:
+                    temp = seq[j]
+                    k = j - gap
+                    while k >= 0 and seq[k] > temp:
+                        seq[k + gap] = seq[k]
+                        k -= gap
+                    seq[k + gap] = temp
+        gap = int(gap / 2)
+    return seq
+
+
 def test_algrithm(sequence, func):
     start = time.time()
     sorted_seq = func(sequence)
@@ -104,7 +127,7 @@ def test_algrithm(sequence, func):
     return sorted_seq
 
 if __name__ == '__main__':
-    seq = [random.randint(1, 500) for i in range(100)];
+    seq = [random.randint(1, 500) for i in range(10)];
     print(seq)
     sorted_seq = test_algrithm(seq, select_sort)
     sorted_seq = test_algrithm(seq, bubble_sort)
@@ -112,4 +135,5 @@ if __name__ == '__main__':
     sorted_seq = test_algrithm(seq, bubble_double_sort)
     sorted_seq = test_algrithm(seq, insertion_sort)
     sorted_seq = test_algrithm(seq, insertion_dichotomy_sort)
+    sorted_seq = test_algrithm(seq, shell_sort)
     print(sorted_seq)

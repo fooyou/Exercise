@@ -217,7 +217,7 @@ def select_sort(sequence):
 5. 将新元素插入到该位置后；
 6. 重复步骤2~5。
 
-![insection sort](./img/selection_sort.gif)
+![insection sort](./img/insertion_sort.gif)
 
 Python 实现：
 
@@ -233,3 +233,52 @@ def insertion_sort(sequence):
         seq[j + 1] = key
     return seq
 ```
+
+**算法改进** 在插入位置时，使用二分查找的方式
+
+```python
+def insertion_dichotomy_sort(sequence):
+    ''' 二分查找插入位置 '''
+    seq = dc(sequence)
+    for i in range(1, len(seq)):
+        key = seq[i]
+        left = 0
+        right = i - 1
+        while left <= right:
+            mid = int((left + right) / 2)
+            if key < seq[mid]:
+                right = mid - 1
+            else:
+                left = mid + 1
+        for j in range(i - 1, left - 1, -1):
+            seq[j + 1] = seq[j]
+        seq[left] = key
+    return seq
+```
+
+#### 算法分析
+
+- 最佳情况：输入为升序序列 T(n) = O(n)
+- 最坏情况：输入为反序序列 T(n) = O(n^2)
+- 平均情况：T(n) = O(n^2)
+
+
+### 希尔排序（Shell Sort）
+
+1959年Shell发明；
+
+第一个突破O(n^2)的排序算法；是简单插入排序的改进版；它与插入排序的不同之处在于，它会优先比较距离较远的元素。希尔排序又叫缩小增量排序
+
+#### 算法简介
+
+希尔排序的核心在于间隔序列的设定。既可以提前设定好间隔序列，也可以动态的定义间隔序列。动态定义间隔序列的算法是《算法（第4版》的合著者Robert Sedgewick提出的。
+
+
+#### 算法过程
+
+先将整个待排序的记录序列分割成为若干子序列分别进行直接插入排序，具体算法描述：
+
+1. 选择一个增量序列 t1, t2, ..., tk，其中 ti > tj, tk=1；
+2. 按增量序列个数 k，对序列进行 k 趟排序；
+3. 每趟排序，根据对应的增量 ti，将待排序列分割为若干个长度为 m 的子序列，分别对各子表进行直接插入排序。仅增量因子为 1 时，整个序列作为一个表来处理，表长度即为整个序列的长度。
+
