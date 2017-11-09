@@ -488,3 +488,189 @@ def heap_sort(sequence):
 作为一种线性时间复杂度的排序，计数排序要求输入的数据必须是有确定范围的整数。
 
 
+#### 算法简介
+
+计数排序(Counting sort)是一种稳定的排序算法。计数排序使用一个额外的数组C，其中第i个元素是待排序数组A中值等于i的元素的个数。然后根据数组C来将A中的元素排到正确的位置。它只能对整数进行排序。
+
+#### 算法过程
+
+1. 找出待排序数组的最大最小元素；
+2. 统计数组中每个值为 i 的元素出现的次数，存入数组 C 的第 i 项；
+3. 对所有的计数累加（从数组 C 的第 1 个元素开始，每一项和前一项相加）；
+4. 反向填充目标数组，将每个元素 i 放在新数组的第 C(i) 项，每放一个元素就将 C(i) 减去 1.
+
+
+Python 代码实现：
+
+```python
+def couting_sort(sequence):
+    '''
+    计数排序：只能对整数排序，利用数组下标，且只能排小整数
+    '''
+    seq = sequence
+    C = [0 for _ in range(max(seq) + 1)]
+    B = [0 for _ in seq]
+    mn = seq[0]
+    mx = seq[0]
+    for i, c in enumerate(seq):
+        mn = mn if mn <= seq[i] else seq[i]
+        mx = mx if mx >= seq[i] else seq[i]
+        C[seq[i]] = C[seq[i]] + 1 if C[seq[i]] else 1
+    for i in range(mn, mx):
+        C[i + 1] = C[i + 1] + C[i]
+    for i in range(len(seq) - 1, -1, -1):
+        B[C[seq[i]] - 1] = seq[i];
+        C[seq[i]] -= 1
+    return B
+```
+
+![counting_sorr](./img/counting_sort.gif)
+
+#### 算法分析
+
+- 最佳情况：T(n) = O(n + k)
+- 最差情况：T(n) = O(n + k)
+- 平均情况：T(n) = O(n + k)
+
+### 九、桶排序（Bucket Sort）
+
+桶排序是计数排序的升级版。它利用了函数的映射关系，高效与否的关键就在于这个映射函数的确定。
+
+
+#### 算法简介
+
+桶排序 (Bucket sort)的工作的原理：假设输入数据服从均匀分布，将数据分到有限数量的桶里，每个桶再分别排序（有可能再使用别的排序算法或是以递归方式继续使用桶排序进行排
+
+
+#### 算法过程
+
+1. 设置一个定量的数组当作空桶；
+2. 遍历输入数据，并且把数据一个一个放到对应的桶里去；
+3. 对每个不是空的桶进行排序；
+4. 从不是空的桶里把排好序的数据拼接起来。
+
+Python 实现：
+
+```python
+def bucket_sort(sequence, num):
+    '''
+    升级版计数排序
+    num: 桶的数量
+    '''
+    seq = sequence
+    mn = seq[0]
+    mx = seq[0]
+    for i in range(1, len(seq)):
+        mn = mn if mn <= seq[i] else seq[i]
+        mx = mx if mx >= seq[i] else seq[i]
+
+    buckets = [[] for _ in range(num + 1)]
+    space = (mx - mn + 1) / num
+
+    for i in range(len(seq)):
+        index = int((seq[i] - mn) / space)
+        if buckets[index]:
+            k = len(buckets[index]) - 1
+            buckets[index].append(seq[i])
+            while k >= 0 and buckets[index][k] > seq[i]:
+                buckets[index][k + 1] = buckets[index][k]
+                k -= 1
+            buckets[index][k + 1] = seq[i]
+        else:
+            buckets[index] = []
+            buckets[index].append(seq[i])
+
+    n = 0
+    result = []
+    while n < num:
+        result += buckets[n]
+        n += 1
+    return result
+```
+
+可视化过程请参考：
+
+https://www.cs.usfca.edu/~galles/visualization/BucketSort.html
+
+#### 算法分析
+
+桶排序最好情况下使用线性时间O(n)，桶排序的时间复杂度，取决与对各个桶之间数据进行排序的时间复杂度，因为其它部分的时间复杂度都为O(n)。很显然，桶划分的越小，各个桶之间的数据越少，排序所用的时间也会越少。但相应的空间消耗就会增大。
+
+- 最佳情况：T(n) = O(n + k)
+- 最差情况：T(n) = O(n + k)
+- 平均情况：T(n) = O(n2)
+
+
+### 十、基数排序（Radix Sort）
+
+基数排序也是非比较的排序算法，对每一位进行排序，从最低位开始排序，复杂度为O(kn),为数组长度，k为数组中的数的最大的位数；
+
+#### 算法简介
+
+基数排序是按照低位先排序，然后收集；再按照高位排序，然后再收集；依次类推，直到最高位。有时候有些属性是有优先级顺序的，先按低优先级排序，再按高优先级排序。最后的次序就是高优先级高的在前，高优先级相同的低优先级高的在前。基数排序基于分别排序，分别收集，所以是稳定的。
+
+
+#### 算法过程
+
+1. 取得数组中的最大数，并取得位数；
+2. arr为原始数组，从最低位开始取每个位组成radix数组；
+3. 对radix进行计数排序（利用计数排序适用于小范围数的特点）；
+
+
+Python 实现：
+
+```python
+def radix_sort(sequence, max_digit):
+    '''
+    基数排序
+    '''
+    seq = dc(sequence)
+    mod = 10
+    dev = 1
+    counter = []
+    for i in range(max_digit):
+        for j in range(len(seq)):
+            bucket = int((seq[j] % mod) / dev)
+            if bucket > len(counter) - 1:
+                counter += [[] for _ in range(bucket - len(counter) + 1)]
+            counter[bucket].append(seq[j])
+        pos = 0
+        for j in range(len(counter)):
+            while len(counter[j]) > 0:
+                seq[pos] = counter[j].pop(0)
+                pos += 1
+        dev *= 10
+        mod *= 10
+    return seq
+```
+
+
+动图展示：
+
+![radix_sort](./img/radix_sort.gif)
+
+#### 算法分析
+
+- 最佳情况：T(n) = O(n * k)
+- 最差情况：T(n) = O(n * k)
+- 平均情况：T(n) = O(n * k)
+
+
+基数排序有两种方法：
+
+- MSD 从高位开始进行排序
+- LSD 从低位开始进行排序
+
+
+### 基数排序 vs 计数排序 vs 桶排序
+
+这三种排序算法都利用了桶的概念，但对桶的使用方法上有明显差异：
+
+- 基数排序：根据键值的每位数字来分配桶
+- 计数排序：每个桶只存储单一键值
+- 桶排序：每个桶存储一定范围的数值
+
+
+参考：
+
+> https://www.cnblogs.com/jztan/p/5878630.html
