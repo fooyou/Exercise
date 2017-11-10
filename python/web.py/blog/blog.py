@@ -6,8 +6,10 @@
 # @Create Date: 2017-11-02 17:11:17
 # @Last Modified: 2017-11-02 17:11:18
 # @Description:
+""" Basic blog using webpy 0.3 """
 import web
 import model
+import datetime
 
 ### Url mappings
 
@@ -32,6 +34,8 @@ class Index:
     def GET(self):
         """ Show page """
         posts = model.get_posts()
+        for p in posts:
+            print web.datestr(p.posted_on)
         return render.index(posts)
 
 
@@ -46,10 +50,10 @@ class View:
 class New:
 
     form = web.form.Form(
-        web.form.Textbox('title', web.form.notnull, 
+        web.form.Textbox('title', web.form.notnull,
             size=30,
             description="Post title:"),
-        web.form.Textarea('content', web.form.notnull, 
+        web.form.Textarea('content', web.form.notnull,
             rows=30, cols=80,
             description="Post content:"),
         web.form.Button('Post entry'),

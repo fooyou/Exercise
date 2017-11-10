@@ -4,7 +4,7 @@
 # @Author: Joshua Liu
 # @Email: liuchaozhenyu@gmail.com
 # @Create Date: 2017-11-10 18:11:32
-# @Last Modified: 2017-11-10 19:11:15
+# @Last Modified: 2017-11-10 21:11:06
 # @Description:
 
 from distutils.core import setup
@@ -13,9 +13,10 @@ from distutils.extension import Extension
 
 ext_modules = [
     Extension("PyAddFunction",
-        ["PyAddFunction.pyx", "AddFunction.c"])
+        ["PyAddFunction.pyx", "mathlib/src/AddFunction.c"],
+        include_dirs=['mathlib/include'])
 ]
 
 setup(
-    ext_modules = cythonize("PyAddFunction.pyx")
+    ext_modules = cythonize(ext_modules)
 )
