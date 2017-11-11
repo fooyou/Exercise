@@ -23,3 +23,5 @@ compile/
 MakeFile
 .ipynb_checkpoints/
 Untitled.ipynb
+*.so
+
