@@ -1,0 +1,4 @@
+2018-05-03 10:19:19,406 - __main__ - %(message)s
+2018-05-03 10:20:34,146 - __main__ - INFO - Hello baby!
+2018-05-03 17:53:52,050 - /Users/joshua/Workspace/exercise/python/logger/tofile.py - INFO - Hello baby!
+2018-05-03 17:54:49,814 - tofile.py - INFO - Hello baby!
