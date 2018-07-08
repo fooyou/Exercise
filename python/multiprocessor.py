@@ -1,36 +1,36 @@
-#!/usr/bin/env python
-# coding: utf-8
-# @File Name: multiprocessor.py
-# @Author: Joshua Liu
-# @Email: liuchaozhenyu@gmail.com
-# @Create Date: 2018-04-18 14:04:27
-# @Last Modified: 2018-04-18 14:04:30
-# @Description:
+import multiprocessing as mp
 import time
-from multiprocessing import Pool
-import itertools
+import os
 
-def run(fn):
-    time.sleep(1)
-    return fn * fn
+def foo_pool(x):
+    print('process id: %s' % os.getpid())
+    result = []
+    for _, v in x:
+        time.sleep(0.3)
+        print(v)
+        result.append(v)
+    return result
+
+result_list = []
+
+def log_result(result):
+    # This is called whenever foo_pool(i) returns a result.
+    # result_list is modified only by the main process, not the pool workers.
+    result_list.append(result)
 
 
-if __name__ == '__main__':
-    testFL = [1, 2, 3, 4, 5, 6]
+def gen_data():
+    return [(i, i + 1) for i in range(100)]
 
-    print("single:")
-    s = time.time()
-    for i in testFL:
-        run(i)
 
-    e = time.time()
-    print("single: ", int(e - s))
-
-    print("multiprocessing")
-    pool = Pool(processes=5)
-    r = pool.map(run, testFL)
+def apply_async_with_callback():
+    pool = mp.Pool(processes=3)
+    data = gen_data()
+    pool.apply_async(foo_pool, args = (data[:len(data) // 2], ), callback = log_result)
+    pool.apply_async(foo_pool, args = (data[len(data) // 2:], ), callback = log_result)
     pool.close()
     pool.join()
-    e2 = time.time()
-    print("multiprocessing: ", int(e2 - e))
-    print(r)
+    print(result_list)
+
+if __name__ == '__main__':
+    apply_async_with_callback()
